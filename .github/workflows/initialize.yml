@@ -1,0 +1,42 @@
+name: initialize
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  initialize:
+    name: Initialize
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Replace repository and package name
+      run: |
+        name=$(grep -o '"name": "[^"]*' package.json | cut -d'"' -f4)
+        repository=$(grep -o '"repository": "[^"]*' package.json | cut -d'"' -f4)
+        sed -i "s#${repository}#${{github.repository}}#g" package.json readme.md
+        sed -i "s#${name}#${{github.event.repository.name}}#g" package.json readme.md
+    - name: Remove lockfiles from .gitignore
+      run: |
+        sed -i '/yarn.lock/d' .gitignore
+        sed -i '/package-lock.json/d' .gitignore
+    - name: Remove template related content
+      run: |
+        sed -i 's#"description":.*#"description": "",#' package.json
+        sed -i '1,6!d' readme.md
+    - name: Clean
+      run: rm .github/workflows/initialize.yml
+    - name: Push changes
+      run: |
+        if (( $(git rev-list --count HEAD) < 2 ))
+        then
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add --all
+          git commit -m "Initialize package"
+          git push "https://${{github.actor}}:${{github.token}}@github.com/${{github.repository}}.git" HEAD:master
+        else
+          echo Skip pushing changes in template repository
+        fi

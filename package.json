@@ -1,0 +1,42 @@
+{
+  "name": "rollup-library",
+  "version": "0.0.0",
+  "description": "Library template for rollup and typescript, powered by github actions",
+  "author": "Julien Dargelos <contact@juliendargelos.com>",
+  "license": "MIT",
+  "repository": "juliendargelos/rollup-library",
+  "homepage": "https://github.com/juliendargelos/rollup-library#readme",
+  "bugs": "https://github.com/juliendargelos/rollup-library/issues",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "browser": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -cw",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.0.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-html": "^0.1.1",
+    "@rollup/plugin-node-resolve": "^7.1.0",
+    "@types/jest": "^25.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "rollup": "^1.31.0",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-ts": "^1.2.14",
+    "ts-jest": "^25.1.0",
+    "typescript": "3.7.5"
+  }
+}

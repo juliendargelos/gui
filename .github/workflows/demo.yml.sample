@@ -1,0 +1,32 @@
+name: demo
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  demo:
+    name: Demo
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Use node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install
+      run: yarn install
+    - name: Build
+      run: yarn build
+      env:
+        DEMO: true
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.10.1
+      with:
+        emptyCommits: false
+      env:
+        PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./demo-dist

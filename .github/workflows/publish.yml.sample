@@ -1,0 +1,29 @@
+name: publish
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Use node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+        registry-url: https://registry.npmjs.org
+    - name: Install
+      run: yarn install
+    - name: Test
+      run: yarn test
+    - name: Build
+      run: yarn build
+    - name: Publish to npm
+      uses: luvies/action-yarn-publish@v0.1.1
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NODE_TOKEN }}
