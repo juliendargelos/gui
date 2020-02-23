@@ -67,12 +67,14 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<pre><code><span class="hljs-keyword">new</span> GUI()
+						<a href="#method-field" id="method-field" style="color: inherit; text-decoration: none;">
+							<h2>Method field</h2>
+						</a>
+					</div>
+					<pre><code><span class="hljs-keyword">new</span> GUI()
   .<span class="hljs-keyword">add</span>({ <span class="hljs-keyword">value</span>: () =&gt; console.log(<span class="hljs-string">'foo'</span>) }) <span class="hljs-comment">// Auto detect</span>
   .<span class="hljs-keyword">add</span>({ field: <span class="hljs-string">'method'</span> }) <span class="hljs-comment">// Specify field name</span>
-  .<span class="hljs-keyword">add</span>({ field: <span class="hljs-keyword">new</span> MethodField() }) <span class="hljs-comment">// Provide field instance</span></code></pre>
-					</div>
-					<p>You can specify additional subfields controlling method arguments:</p>
+  .<span class="hljs-keyword">add</span>({ field: <span class="hljs-keyword">new</span> MethodField() }) <span class="hljs-comment">// Provide field instance</span></code></pre><p>You can specify additional subfields controlling method arguments:</p>
 					<pre><code><span class="hljs-keyword">new</span> GUI()
   .<span class="hljs-keyword">add</span>({
     label: <span class="hljs-string">'Add'</span>,
@@ -83,7 +85,7 @@
     <span class="hljs-comment">// so we'll get the right field types</span>
   })</code></pre><br>
 					<center>
-						<img alt="preview" src="../../media/fields/method.png" width="300">
+						<img alt="preview" src="../media/fields/method.png" width="300">
 						</center
 				</div>
 			</section>

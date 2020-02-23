@@ -67,18 +67,20 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<pre><code><span class="hljs-built_in">new</span> GUI()
+						<a href="#file-field" id="file-field" style="color: inherit; text-decoration: none;">
+							<h2>File field</h2>
+						</a>
+					</div>
+					<pre><code><span class="hljs-built_in">new</span> GUI()
   .<span class="hljs-keyword">add</span>({ <span class="hljs-keyword">value</span>: <span class="hljs-built_in">new</span> File([], <span class="hljs-string">'foo.txt'</span>) }) // Auto detect
   .<span class="hljs-keyword">add</span>({ <span class="hljs-keyword">value</span>: <span class="hljs-built_in">new</span> Blob([]) })
   .<span class="hljs-keyword">add</span>({ <span class="hljs-keyword">value</span>: <span class="hljs-built_in">new</span> ReadableStream({  }) })
   .<span class="hljs-keyword">add</span>({ field: <span class="hljs-string">'file'</span>, <span class="hljs-keyword">value</span>: <span class="hljs-string">'/foo.txt'</span> }) // Specify field <span class="hljs-type">name</span>
   // (implicit <span class="hljs-string">'url'</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">for</span> string <span class="hljs-keyword">values</span>)
   .<span class="hljs-keyword">add</span>({ field: <span class="hljs-string">'file'</span>, <span class="hljs-keyword">value</span>: <span class="hljs-string">'foo bar'</span>, <span class="hljs-keyword">format</span>: <span class="hljs-string">'text'</span> })
-  .<span class="hljs-keyword">add</span>({ field: <span class="hljs-built_in">new</span> FileField() }) // Provide field instance</code></pre>
-					</div>
-					<br>
+  .<span class="hljs-keyword">add</span>({ field: <span class="hljs-built_in">new</span> FileField() }) // Provide field instance</code></pre><br>
 					<center>
-						<img alt="preview" src="../../media/fields/file.png" width="300">
+						<img alt="preview" src="../media/fields/file.png" width="300">
 						</center
 				</div>
 			</section>
