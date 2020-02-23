@@ -198,7 +198,7 @@ const trackStyles = css`
           .step=${this.step}
           @input=${(event: InputEvent) => {
             this.input(event)
-            this.displayValue = this.value
+            requestAnimationFrame(() => { this.displayValue = this.value })
           }}
         >
       ` : ''}
