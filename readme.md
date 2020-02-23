@@ -35,6 +35,9 @@ const gui = new GUI({ target })
 
 ### Install
 
+*Not published yet*
+
+<!--
 ```bash
 npm install @juliendargelos/gui --save
 ```
@@ -42,6 +45,7 @@ npm install @juliendargelos/gui --save
 ```bash
 yarn add @juliendargelos/gui
 ```
+!-->
 
 ### Usage
 
