@@ -9,8 +9,6 @@
 > *Light and expressive GUI with web components*
 
 ```typescript
-import { GUI } from '~/juliendargelos/gui'
-
 const target = {
   lorem: 1,
   ipsum: 'foo',
@@ -33,8 +31,6 @@ const gui = new GUI({ target })
     .add('adipisicing')
     .add('elit')
   )
-
-document.body.appendChild(gui)
 ```
 
 ### Install
