@@ -99,6 +99,11 @@ export interface GUIParameters<
       overflow: hidden;
     }
 
+    span {
+      z-index: 2;
+      position: relative;
+    }
+
     hr {
       width: 5px;
       height: 100%;
