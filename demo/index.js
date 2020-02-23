@@ -439,6 +439,11 @@ const X=(e,t)=>"method"!==t.kind||!t.descriptor||"value"in t.descriptor?{kind:"f
       overflow: hidden;
     }
 
+    span {
+      z-index: 2;
+      position: relative;
+    }
+
     hr {
       width: 5px;
       height: 100%;
