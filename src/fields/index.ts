@@ -8,16 +8,6 @@ import { FileField, FileFieldParameters } from '~/fields/file-field'
 import { ImageField, ImageFieldParameters } from '~/fields/image-field'
 import { MethodField, MethodFieldParameters } from '~/fields/method-field'
 
-Field
-  .register('text', TextField)
-  .register('color', ColorField)
-  .register('number', NumberField)
-  .register('select', SelectField)
-  .register('checkbox', CheckboxField)
-  .register('file', FileField)
-  .register('image', ImageField)
-  .register('method', MethodField)
-
 export {
   TextField,
   TextFieldParameters,
@@ -42,4 +32,15 @@ export {
 
   MethodField,
   MethodFieldParameters
+}
+
+export const Fields = {
+  text: TextField,
+  color: ColorField,
+  number: NumberField,
+  select: SelectField,
+  checkbox: CheckboxField,
+  file: FileField,
+  image: ImageField,
+  method: MethodField
 }

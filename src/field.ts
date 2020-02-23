@@ -2,9 +2,17 @@ import { TemplateResult, property, css } from 'lit-element'
 import { Component } from '~/component'
 import { UpdateEvent } from '~/update-event'
 
-interface FieldType {
+export interface FieldType {
   new(parameters?: FieldParameters): Field<any, any, any>
   match(parameters: Record<string, any>): boolean
+}
+
+/**
+ * Dictionary of field types indexed by name,
+ * meant to be registered using [[Field.use]].
+ */
+export interface FieldSet {
+  [name: string]: FieldType
 }
 
 export interface FieldParameters<Input = any> {
@@ -116,6 +124,17 @@ export class Field<
     }
 
     this.types.unshift({ type, name })
+    return this
+  }
+
+  /**
+   * Registers all field types from a [[FieldSet]].
+   */
+  public static use(set: FieldSet): typeof Field {
+    Object
+      .entries(set)
+      .forEach(({ 0: name, 1: type }) => this.register(name, type))
+
     return this
   }
 

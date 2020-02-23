@@ -1,4 +1,5 @@
 import { html, property, css, TemplateResult } from 'lit-element'
+import { Field, FieldType, FieldSet } from '~/field'
 import { ControllerTarget } from '~/controller'
 import { define } from '~/utils/decorators'
 
@@ -203,5 +204,21 @@ export interface GUIParameters<
       <hr @mousedown=${this.resize}>
       ${super.render()}
     `
+  }
+
+  /**
+   * Alias for [[Field.register]]
+   */
+  public static register(name: string, type: FieldType): typeof GUI {
+    Field.register(name, type)
+    return this
+  }
+
+  /**
+   * Alias for [[Field.use]]
+   */
+  public static use(set: FieldSet): typeof GUI {
+    Field.use(set)
+    return this
   }
 }
