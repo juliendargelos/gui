@@ -2,6 +2,7 @@
   "name": "@juliendargelos/gui",
   "version": "1.0.0",
   "description": "Light and expressive gui with web components",
+  "keywords": ["gui", "web components"],
   "author": "Julien Dargelos <contact@juliendargelos.com>",
   "license": "MIT",
   "repository": "juliendargelos/gui",
