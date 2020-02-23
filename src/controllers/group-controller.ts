@@ -25,6 +25,13 @@ export interface GroupControllerParameters<
 @define('group-controller') export class GroupController<
   Target extends ControllerTarget = ControllerTarget
 > extends Controller<Target> {
+  protected openTimeout?: number
+
+  protected get contentHeight(): number {
+    return [...(this.content.children as unknown as HTMLElement[])]
+      .reduce((height, element) => height + element.offsetHeight, 0)
+  }
+
   @query('div') protected content!: HTMLElement
 
   @property({
@@ -34,23 +41,26 @@ export interface GroupControllerParameters<
 
   @property({
     type: Boolean,
-    reflect: true
-  }) protected flat: boolean = false
-
-  @property({
-    type: Boolean,
     reflect: true,
     attribute: 'open'
   }) protected _open: boolean = false
 
-  protected openTimeout?: number
-  public childControllers: Controller[] = []
+  /**
+   * Set to true to disable indentation of child controllers
+   */
+  @property({
+    type: Boolean,
+    reflect: true
+  }) public flat: boolean = false
 
-  protected get contentHeight(): number {
-    return [...(this.content.children as unknown as HTMLElement[])]
-      .reduce((height, element) => height + element.offsetHeight, 0)
-  }
+  /**
+   * Array of child controllers.
+   */
+  @property({ attribute: false }) public childControllers: Controller[] = []
 
+  /**
+   * Controls wether the group controller is collapsed or not.
+   */
   public get open(): boolean {
     return this._open
   }
@@ -75,6 +85,9 @@ export interface GroupControllerParameters<
     }
   }
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Controller.styles}
 
@@ -157,6 +170,8 @@ export interface GroupControllerParameters<
     }
   `
 
+  public constructor(parameters?: GroupControllerParameters<Target>)
+
   public constructor({
     open = false,
     transparent = false,
@@ -200,18 +215,44 @@ export interface GroupControllerParameters<
     if (!this.open) this.content.style.height = '0'
   }
 
+  /**
+   * Attach all child controllers to their target (if they have one)
+   */
   public attach(): this {
     super.attach()
     this.childControllers.forEach(controller => controller.attach())
     return this
   }
 
+  /**
+   * Dettach all child controllers from their target
+   */
   public dettach(): this {
     super.dettach()
     this.childControllers.forEach(controller => controller.dettach())
     return this
   }
 
+  /**
+   * Adds a new child controller to the group controller.
+   *
+   * You can pass either a controller instance, a property name,
+   * and / or [[ValueControllerFieldParameters]].
+   *
+   * ```
+   * new GUI({ target })
+   *   .add('lorem') // Property name refering to target
+   *   .add('lorem', { minimum: 5 }) // Additional parameters (assuming type number)
+   *   .add('lorem', { field: 'number' }) // Specify explicit field type
+   *   .add('lorem', { target: { lorem: 1 } }) // Overwrite target
+   *   .add('lorem', (controller) => { // Pass controller callback as last argument
+   *     controller.maximum = 10
+   *   }))
+   *   .add(new ValueController()) // Use controller instance
+   *   .add({ property: 'lorem', field: 'number' }) // Use plain object
+   *   .add({ field: 'number' }) // Standalone controller (not attached to a property)
+   * ```
+   */
   public add<ChildController extends Controller>(
     controller: Controller,
     callback?: (controller: Controller) => void
@@ -293,10 +334,26 @@ export interface GroupControllerParameters<
 
     callback && callback(controller)
     this.childControllers.push(controller)
+    this.requestUpdate('childControllers', undefined)
 
     return this
   }
 
+  /**
+   * Adds a new group child controller to the group controller.
+   *
+   * You can pass either a property name and / or [[GroupControllerParameters]].
+   *
+   * ```
+   * new GUI({ target })
+   *   .group('lorem', group => group // Property name refering to target (value must be an object)
+   *     // Do other things with the child group
+   *   )
+   *   .group('lorem', { open: true }) // Additional parameters
+   *   .group('lorem', { target: { foo: 1 } }) // Overwrite target
+   *   .group({ target: { foo: 1 } }) // Use plain object
+   * ```
+   */
   public group<ChildTarget extends ControllerTarget = Target[keyof Target]>(
     property: keyof Target,
     callback?: (controller: GroupController<ChildTarget>) => void
@@ -343,17 +400,20 @@ export interface GroupControllerParameters<
 
     const controller = new GroupController(parameters)
 
-    this.add(controller)
-
     if (typeof parametersOrCallback === 'function') {
       parametersOrCallback && parametersOrCallback(controller)
     } else {
       callback && callback(controller)
     }
 
+    this.add(controller)
+
     return this
   }
 
+  /**
+   * Removes a child controller from the group controller
+   */
   public remove(controller?: Controller): this {
     if (controller) {
       let index = this.childControllers.indexOf(controller)
@@ -363,11 +423,17 @@ export interface GroupControllerParameters<
     return this
   }
 
+  /**
+   * Toggles the group controller by opening or collapsing it.
+   */
   public toggle(): this {
     this.open = !this.open
     return this
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       <span

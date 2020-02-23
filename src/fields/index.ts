@@ -9,14 +9,14 @@ import { ImageField, ImageFieldParameters } from '~/fields/image-field'
 import { MethodField, MethodFieldParameters } from '~/fields/method-field'
 
 Field
-  .register(TextField)
-  .register(ColorField)
-  .register(NumberField)
-  .register(SelectField)
-  .register(CheckboxField)
-  .register(FileField)
-  .register(ImageField)
-  .register(MethodField)
+  .register('text', TextField)
+  .register('color', ColorField)
+  .register('number', NumberField)
+  .register('select', SelectField)
+  .register('checkbox', CheckboxField)
+  .register('file', FileField)
+  .register('image', ImageField)
+  .register('method', MethodField)
 
 export {
   TextField,

@@ -2,6 +2,7 @@ import autoExternal from 'rollup-plugin-auto-external'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import bundleSize from 'rollup-plugin-bundle-size'
 import commonjs from '@rollup/plugin-commonjs'
+import postcss from 'rollup-plugin-postcss'
 import cleaner from 'rollup-plugin-cleaner'
 import alias from '@rollup/plugin-alias'
 import serve from 'rollup-plugin-serve'
@@ -74,7 +75,7 @@ export default [
     input: 'demo/index.ts',
     output: {
       ...config.output,
-      file: 'demo-dist/index.js',
+      file: production ? 'docs/demo/index.js' : 'demo-dist/index.js',
       format: 'iife',
       globals: {
         crypto: 'crypto'
@@ -89,6 +90,7 @@ export default [
           declaration: false
         })
       }),
+      postcss(),
       cleaner({ targets: ['demo-dist'] }),
       nodeResolve({ extensions: ['.ts', '.js'] }),
       commonjs(),

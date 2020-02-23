@@ -1,4 +1,4 @@
-<img alt="Preview" src="preview.png" align="right" width="50%">
+<img alt="Preview" src="media/preview.png" align="right" width="50%">
 
 # GUI
 
@@ -7,7 +7,7 @@
 [![version](https://img.shields.io/github/package-json/v/juliendargelos/gui)](https://github.com/juliendargelos/gui)
 
 *Light and expressive GUI with web components*<br>
-**[Go to demo](https://juliendargelos.com/gui)**
+**[Documentation](https://juliendargelos.com/gui)** | **[Demo](https://juliendargelos.com/gui/demo)**
 
 ```typescript
 const target = {

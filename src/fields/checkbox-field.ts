@@ -1,3 +1,20 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ value: false }) // Auto detect
+ *   .add({ field: 'checkbox' }) // Specify field name
+ *   .add({ field: new CheckboxField() }) // Provide field instance
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/checkbox.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, query, TemplateResult } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { define } from '~/utils/decorators'
@@ -14,6 +31,9 @@ export interface CheckboxFieldParameters extends FieldParameters<boolean> {
   protected toggle = (event: Event) => this.$input.click()
   @query('input') protected $input!: HTMLInputElement
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Field.styles}
 
@@ -63,6 +83,9 @@ export interface CheckboxFieldParameters extends FieldParameters<boolean> {
     this.removeEventListener('click', this.toggle)
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       <input
@@ -75,6 +98,9 @@ export interface CheckboxFieldParameters extends FieldParameters<boolean> {
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match({ value = undefined }: Record<string, any>): boolean {
     return typeof value === 'boolean'
   }

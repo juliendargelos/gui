@@ -1,3 +1,27 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ value: '#123' }) // Auto detect
+ *   .add({ value: '#123456' })
+ *   .add({ value: 'rgb(1, 2, 3)' })
+ *   .add({ value: 'rgba(1, 2, 3, 0.5)' })
+ *   .add({ value: [1, 2, 3] })
+ *   .add({ value: [1, 2, 3, 0.5] })
+ *   .add({ value: { r: 1, g: 2, b: 3 } })
+ *   .add({ value: { r: 1, g: 2, b: 3, a: 0.5 } })
+ *   .add({ field: 'color' }) // Specify field name
+ *   .add({ field: new ColorField() }) // Provide field instance
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/color.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, property, TemplateResult, query } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { define } from '~/utils/decorators'
@@ -30,6 +54,9 @@ export interface ColorFieldParameters<
   @property({ type: String }) public format: Format
   @property({ type: Boolean }) public alpha: Alpha
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Field.styles}
 
@@ -99,6 +126,8 @@ export interface ColorFieldParameters<
     }
   `
 
+  public constructor(parameters?: ColorFieldParameters<Format, Alpha>)
+
   constructor({
     value = undefined,
     format = colorFormat(value, 'rgb') as Format,
@@ -140,6 +169,9 @@ export interface ColorFieldParameters<
     return this
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     const hex = color(this.value, 'hex')
     const alphaColor = `rgba(255, 255, 255, ${1 - colorAlpha(this.value)})`
@@ -191,6 +223,9 @@ export interface ColorFieldParameters<
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match({
     value = undefined,
     format = colorFormat(value)

@@ -15,7 +15,7 @@ export interface ValueControllerParameters<
   Property extends keyof Target = keyof Target,
   Value extends Target[Property] = Target[Property]
 > extends ControllerParameters<Target> {
-  field?: Field<Value>
+  field?: Field<Value> | string
   property?: Property
   inline?: boolean
   fluid?: boolean
@@ -45,6 +45,9 @@ export type ValueControllerFieldParameters<
   @property({ type: Boolean, reflect: true }) public inline: boolean
   @property({ type: Boolean, reflect: true }) public fluid: boolean
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Controller.styles}
 
@@ -134,8 +137,9 @@ export type ValueControllerFieldParameters<
     this.property = property
     this.inline = inline
     this.fluid = fluid
-    this.field = field ? field : Field.from({
+    this.field = field instanceof Field ? field : Field.from({
       value,
+      field,
       ...parameters
     }) as Field<Value>
 
@@ -213,6 +217,9 @@ export type ValueControllerFieldParameters<
     return this
   }
 
+  /**
+   * @ignore
+   */
   public render() {
     return html`${this.label
       ? html`<span @mousedown=${(event: Event) => event.preventDefault()}>

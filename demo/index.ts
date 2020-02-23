@@ -1,4 +1,7 @@
+import 'highlight.js/styles/github.css'
+import './index.css'
 import { GUI, ValueController, GroupController } from '~/index'
+import { preview } from './preview'
 
 const target = {
   lorem: 1,
@@ -11,8 +14,6 @@ const target = {
     elit: 'https://picsum.photos/400/200.jpg'
   }
 }
-
-const preview = document.createElement('pre')
 
 const gui = new GUI({
   target,
@@ -43,29 +44,7 @@ gui.group({ target: gui, label: 'GUI' }, group => group
   .add('fixed')
 )
 
-const update = () => {
-  preview.textContent = JSON.stringify(target, null, 2)
-}
+gui.on('update', () => preview(target))
+preview(target)
 
-gui.on('update', update)
-update()
-
-const style = document.createElement('style')
-
-style.textContent = `
-  body {
-    background-color: #111;
-    margin: 0;
-    color: #eee;
-  }
-
-  pre {
-    padding: 20px;
-    margin: 0;
-    font-size: 20px;
-  }
-`
-
-document.head.appendChild(style)
 document.body.appendChild(gui)
-document.body.appendChild(preview)

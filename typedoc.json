@@ -1,0 +1,16 @@
+{
+  "inputFiles": ["src/index.ts"],
+  "exclude": [
+    "demo/*",
+    "src/utils/*",
+    "src/controllers/index.ts",
+    "src/fields/index.ts"
+  ],
+  "excludeExternals": true,
+  "excludeProtected": true,
+  "excludePrivate": true,
+  "mode": "modules",
+  "plugin": "typedoc-neo-theme",
+  "media": "media",
+  "out": "docs"
+}

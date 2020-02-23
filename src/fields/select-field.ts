@@ -1,3 +1,21 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ options: ['foo', 'bar'] }) // Auto detect
+ *   .add({ options: { 'simple value': 'foo', 'complex value': new Blob([]) ] })
+ *   .add({ field: 'select' }) // Specify field name
+ *   .add({ field: new SelectField() }) // Provide field instance
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/select.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, property, TemplateResult } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { define } from '~/utils/decorators'
@@ -18,6 +36,9 @@ export interface SelectFieldParameters<
   @property({ type: Object }) public options?: SelectFieldOptions<Value>
   @property({ type: Boolean }) public humanize: boolean
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Field.styles}
 
@@ -38,6 +59,8 @@ export interface SelectFieldParameters<
       pointer-events: none;
     }
   `
+
+  public constructor(parameters?: SelectFieldParameters<Value>)
 
   constructor({
     options = undefined,
@@ -75,6 +98,9 @@ export interface SelectFieldParameters<
     return this.values[value as number]
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       <select
@@ -91,6 +117,9 @@ export interface SelectFieldParameters<
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match({ options = undefined }: Record<string, any>): boolean {
     return options && typeof options === 'object'
   }

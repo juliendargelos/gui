@@ -1,3 +1,24 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ value: new File([], 'foo.txt') }) // Auto detect
+ *   .add({ value: new Blob([]) })
+ *   .add({ value: new ReadableStream({  }) })
+ *   .add({ field: 'file', value: '/foo.txt' }) // Specify field name
+ *   // (implicit 'url' format for string values)
+ *   .add({ field: 'file', value: 'foo bar', format: 'text' })
+ *   .add({ field: new FileField() }) // Provide field instance
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/file.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, property, query, TemplateResult } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { UpdateEvent } from '~/update-event'
@@ -33,6 +54,9 @@ export interface FileFieldParameters<
   @property({ type: String }) public format: Format
   @property({ type: String }) public accept?: string
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Field.styles}
 
@@ -122,9 +146,16 @@ export interface FileFieldParameters<
     }
   `
 
+  public constructor(parameters?: FileFieldParameters<Format>)
+
   public constructor({
-    format = 'url' as Format,
     value = undefined,
+    format = (
+      value instanceof File ? 'file' :
+        value instanceof Blob ? 'blob' :
+          value instanceof ArrayBuffer ? 'buffer' :
+            value instanceof ReadableStream ? 'stream' : 'url'
+    ) as Format,
     accept = value instanceof File || value instanceof Blob
       ? value.type
       : undefined,
@@ -181,7 +212,7 @@ export interface FileFieldParameters<
       this.name = value
     }
 
-    if (!this.name) this.name = 'Unknown file'
+    if (!this.name) this.name = `Arbitrary ${this.format}`
 
     return super.set(value)
   }
@@ -192,6 +223,9 @@ export interface FileFieldParameters<
     this.dispatchEvent(new UpdateEvent(this.value, previous))
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       <input
@@ -209,7 +243,15 @@ export interface FileFieldParameters<
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match({ value = undefined }: Record<string, any>): boolean {
-    return value instanceof File || value instanceof Blob
+    return (
+      value instanceof File ||
+      value instanceof Blob ||
+      value instanceof ArrayBuffer ||
+      value instanceof ReadableStream
+    )
   }
 }

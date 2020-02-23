@@ -21,11 +21,21 @@ export class Field<
   focus: Event
   blur: Event
 }> {
+  /**
+   * Current value of the field
+   */
   @property() public value!: Value
+
+  /**
+   * Disable the field when set to true
+   */
   @property({ type: Boolean }) public disabled: boolean
 
-  protected static types: FieldType[] = []
+  protected static types: { type: FieldType, name: string }[] = []
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Component.styles}
 
@@ -53,6 +63,8 @@ export class Field<
     }
   `
 
+  public constructor(parameters?: FieldParameters<Input>)
+
   public constructor({
     value = undefined,
     disabled = false
@@ -79,26 +91,51 @@ export class Field<
     return value as unknown as Input
   }
 
+  /**
+   * Set the value of the field
+   */
   public set(value: Input | undefined): this {
     this.value = value as unknown as Value
     return this
   }
 
+  /**
+   * Returns true if the parameters matches this field type
+   */
   public static match(parameters: Record<string, any>): boolean {
-    return this.types.some(type => type.match(parameters))
+    return this.types.some(({ type }) => type.match(parameters))
   }
 
-  public static register(type: FieldType): typeof Field {
-    this.types.unshift(type)
+  /**
+   * Registers a field type, making it available when using [[Field.from]]
+   * or [[GroupController.add]].
+   */
+  public static register(name: string, type: FieldType): typeof Field {
+    if (this.types.find(type => name === type.name)) {
+      throw new Error(`Field type ${name} has already been registered`)
+    }
+
+    this.types.unshift({ type, name })
     return this
   }
 
+  /**
+   * Creates a field from arbitrary parameters. It will try to detect the corresponding
+   * field type based on the return of [[Field.match] within registered Field types.
+   *
+   * The `name` parameter of [[Field.register]] can be used to require an explicit
+   * field type:
+   *
+   * ```
+   * Field.from({ field: 'number' })
+   * ```
+   */
   public static from<T extends Field = Field>(
     parameters: Record<string, any>
   ): T {
-    return new (
-      this.types.find(type => type.match(parameters)) ||
-      this.types[this.types.length - 1]
-    )(parameters) as T
+    return new (this.types.find(({ type, name }) => (
+      name === parameters.field ||
+      type.match(parameters)
+    )) || this.types[this.types.length - 1]).type(parameters) as T
   }
 }

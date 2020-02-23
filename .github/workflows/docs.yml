@@ -1,4 +1,4 @@
-name: demo
+name: docs
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
     - master
 
 jobs:
-  demo:
-    name: Demo
+  docs:
+    name: Docs
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -18,7 +18,11 @@ jobs:
         node-version: 12.x
     - name: Install
       run: yarn install
-    - name: Build
+    - name: Build docs
+      run: yarn docs
+      env:
+        DEMO: true
+    - name: Build demo
       run: yarn build
       env:
         DEMO: true
@@ -29,4 +33,4 @@ jobs:
       env:
         PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./demo-dist
+        PUBLISH_DIR: ./docs

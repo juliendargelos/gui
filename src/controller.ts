@@ -19,6 +19,9 @@ export class Controller<
   public listen: boolean
   @property({ type: String }) public label?: string
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Component.styles}
 
@@ -36,6 +39,8 @@ export class Controller<
       box-sizing: border-box;
     }
   `
+
+  public constructor(parameters?: ControllerParameters<Target>)
 
   public constructor({
     target = undefined,

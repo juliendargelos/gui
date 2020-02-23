@@ -3,6 +3,9 @@ import { LitElement, css } from 'lit-element'
 export abstract class Component<
   Events extends { [type: string]: Event } = { [type: string]: Event }
 > extends LitElement {
+  /**
+   * @ignore
+   */
   public static styles = css`
     :host {
       display: block;

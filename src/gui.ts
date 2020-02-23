@@ -30,6 +30,9 @@ export interface GUIParameters<
     this.style.width = `${Math.max(200, width)}px`
   }
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${GroupController.styles}
 
@@ -154,6 +157,8 @@ export interface GUIParameters<
     }
   `
 
+  public constructor(parameters?: GUIParameters<Target>)
+
   constructor({
     scheme = undefined,
     fixed = false,
@@ -185,6 +190,9 @@ export interface GUIParameters<
     }, { once: true })
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       <hr @mousedown=${this.resize}>

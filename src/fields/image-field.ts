@@ -1,3 +1,22 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ value: File([], 'foo.png', { type: 'image/png' }) }) // Auto detect
+ *   .add({ value: Blob([] { type: 'image/png' }) })
+ *   .add({ value: '/foo.png' })
+ *   .add({ field: 'image' }) // Specify field name
+ *   .add({ field: new ImageField() }) // Provide field instance
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/image.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, property, query, TemplateResult } from 'lit-element'
 import { FileField, FileFieldParameters, FileFieldFormats } from '~/fields/file-field'
 import { define } from '~/utils/decorators'
@@ -13,6 +32,9 @@ export interface ImageFieldParameters<
 > extends FileField<Format> {
   @property({ type: String, attribute: false }) protected thumbnail?: string
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${FileField.styles}
 
@@ -94,6 +116,9 @@ export interface ImageFieldParameters<
     return super.set(value)
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       <figure>
@@ -105,6 +130,9 @@ export interface ImageFieldParameters<
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match(parameters: Record<string, any>): boolean {
     const value = parameters.value as File
     return (value &&

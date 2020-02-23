@@ -1,3 +1,34 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ value: () => console.log('foo') }) // Auto detect
+ *   .add({ field: 'method' }) // Specify field name
+ *   .add({ field: new MethodField() }) // Provide field instance
+ * ```
+ *
+ * You can specify additional subfields controlling method arguments:
+ *
+ * ```
+ * new GUI()
+ *   .add({
+ *     label: 'Add',
+ *     value: (a, b) => alert(a + b) ,
+ *     args: [{ value: 1 }, { value: 2 }]
+ *     // Array of the same parameters you would give to add a field
+ *     // Here we take advantage of auto-detection of number values
+ *     // so we'll get the right field types
+ *   })
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/method.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, property, TemplateResult } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { GroupController } from '~/controllers/group-controller'
@@ -19,6 +50,9 @@ export interface MethodFieldParameters extends FieldParameters<
 > {
   protected parametersController?: GroupController
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Field.styles}
 
@@ -52,6 +86,8 @@ export interface MethodFieldParameters extends FieldParameters<
       margin-bottom: var(--padding);
     }
   `
+
+  public constructor(parameters?: MethodFieldParameters)
 
   constructor({
     args = undefined,
@@ -92,6 +128,9 @@ export interface MethodFieldParameters extends FieldParameters<
     }
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       ${this.parametersController ? this.parametersController : ''}
@@ -99,6 +138,9 @@ export interface MethodFieldParameters extends FieldParameters<
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match({ value = undefined }: Record<string, any>): boolean {
     return typeof value === 'function'
   }

@@ -1,0 +1,14 @@
+body {
+  background-color: #111;
+  min-height: 100vh;
+  margin: 0;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+pre {
+  padding: 20px;
+  margin: auto;
+  font-size: 20px;
+}

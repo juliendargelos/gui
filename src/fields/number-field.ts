@@ -1,3 +1,20 @@
+/**
+ * ```
+ * new GUI()
+ *   .add({ value: 1 }) // Auto detect
+ *   .add({ field: 'number' }) // Specify field name
+ *   .add({ field: new NumberField() }) // Provide field instance
+ * ```
+ *
+ * <br>
+ *
+ * <center>
+ *   <img alt="preview" src="/media/fields/number.png" width="300">
+ * </center
+ *
+ * @packageDocumentation
+ */
+
 import { html, css, property, query, TemplateResult } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { define } from '~/utils/decorators'
@@ -45,6 +62,9 @@ const trackStyles = css`
     return this.range && this.maximum === Infinity ? 100 : this.maximum
   }
 
+  /**
+   * @ignore
+   */
   public static styles = css`
     ${Field.styles}
 
@@ -136,6 +156,8 @@ const trackStyles = css`
     }
   `
 
+  public constructor(parameters?: NumberFieldParameters)
+
   constructor({
     minimum = -Infinity,
     maximum = Infinity,
@@ -157,6 +179,9 @@ const trackStyles = css`
     ))
   }
 
+  /**
+   * @ignore
+   */
   public render(): TemplateResult {
     return html`
       ${this.range ? html`
@@ -191,6 +216,9 @@ const trackStyles = css`
     `
   }
 
+  /**
+   * @ignore
+   */
   public static match({ value = undefined }: Record<string, any>): boolean {
     return typeof value === 'number'
   }
