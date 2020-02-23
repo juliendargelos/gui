@@ -18,7 +18,7 @@ const target = {
   amet: {
     consectetur: false,
     adipisicing: 'rgba(35, 50, 75, 0.5)',
-    elit: 'https://picsum.photos/400/200.jpg'
+    elit: '//picsum.photos/400/200.jpg'
   }
 }
 
