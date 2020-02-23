@@ -1,7 +1,7 @@
 {
   "name": "@juliendargelos/gui",
   "version": "0.0.0",
-  "description": "Light and expressive gui",
+  "description": "Light and expressive gui with web components",
   "author": "Julien Dargelos <contact@juliendargelos.com>",
   "license": "MIT",
   "repository": "juliendargelos/gui",
