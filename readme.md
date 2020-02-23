@@ -6,7 +6,7 @@
 [![build](https://github.com/juliendargelos/gui/workflows/build/badge.svg?branch=master)](https://github.com/juliendargelos/gui/actions?workflow=build)
 [![version](https://img.shields.io/github/package-json/v/juliendargelos/gui)](https://github.com/juliendargelos/gui)
 
-> *Light and expressive GUI with web components*
+*Light and expressive GUI with web components*
 
 ```typescript
 const target = {
