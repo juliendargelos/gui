@@ -19,7 +19,7 @@ jobs:
     - name: Install
       run: yarn install
     - name: Build docs
-      run: yarn docs
+      run: yarn doc
       env:
         DEMO: true
     - name: Build demo
