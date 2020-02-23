@@ -22,7 +22,11 @@
  *   })
  * ```
  *
+ * <br>
+ *
  * #### Preview
+ *
+ * <br>
  *
  * <img alt="preview" src="../media/fields/method.png" width="300">
  *

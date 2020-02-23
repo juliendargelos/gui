@@ -12,7 +12,11 @@
  *   .add({ field: new FileField() }) // Provide field instance
  * ```
  *
+ * <br>
+ *
  * #### Preview
+ *
+ * <br>
  *
  * img alt="preview" src="../media/fields/file.png" width="300">
  *
