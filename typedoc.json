@@ -4,8 +4,7 @@
     "demo/*",
     "src/utils/*",
     "src/controllers/index.ts",
-    "src/fields/index.ts",
-    "node_modules/**/*"
+    "src/fields/index.ts"
   ],
   "excludeExternals": true,
   "excludeProtected": true,
