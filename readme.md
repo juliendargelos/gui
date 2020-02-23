@@ -46,4 +46,4 @@ yarn add @juliendargelos/gui
 
 ### Usage
 
-*Documentation coming soon*
+*Coming soon*
