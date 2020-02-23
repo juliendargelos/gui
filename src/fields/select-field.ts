@@ -9,11 +9,9 @@
  *   .add({ field: new SelectField() }) // Provide field instance
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/select.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/select.png" width="300">
  *
  * @packageDocumentation
  */

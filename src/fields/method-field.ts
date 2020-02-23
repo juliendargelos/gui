@@ -22,11 +22,9 @@
  *   })
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/method.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/method.png" width="300">
  *
  * @packageDocumentation
  */

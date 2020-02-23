@@ -8,11 +8,9 @@
  *   .add({ field: new NumberField() }) // Provide field instance
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/number.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/number.png" width="300">
  *
  * @packageDocumentation
  */

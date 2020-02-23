@@ -10,11 +10,9 @@
  *   .add({ field: new ImageField() }) // Provide field instance
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/image.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/image.png" width="300">
  *
  * @packageDocumentation
  */

@@ -8,11 +8,9 @@
  *   .add({ field: new TextField() }) // Provide field instance
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/text.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/text.png" width="300">
  *
  * @packageDocumentation
  */

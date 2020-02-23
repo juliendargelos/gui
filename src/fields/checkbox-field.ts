@@ -8,11 +8,9 @@
  *   .add({ field: new CheckboxField() }) // Provide field instance
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/checkbox.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/checkbox.png" width="300">
  *
  * @packageDocumentation
  */

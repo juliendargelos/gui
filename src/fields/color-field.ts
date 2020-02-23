@@ -15,11 +15,9 @@
  *   .add({ field: new ColorField() }) // Provide field instance
  * ```
  *
- * <br>
+ * #### Preview
  *
- * <center>
- *   <img alt="preview" src="../media/fields/color.png" width="300">
- * </center
+ * <img alt="preview" src="../media/fields/color.png" width="300">
  *
  * @packageDocumentation
  */
