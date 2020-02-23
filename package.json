@@ -1,12 +1,12 @@
 {
-  "name": "bindui",
+  "name": "@juliendargelos/gui",
   "version": "0.0.0",
   "description": "",
   "author": "Julien Dargelos <contact@juliendargelos.com>",
   "license": "MIT",
-  "repository": "juliendargelos/bindui",
-  "homepage": "https://github.com/juliendargelos/bindui#readme",
-  "bugs": "https://github.com/juliendargelos/bindui/issues",
+  "repository": "juliendargelos/gui",
+  "homepage": "https://github.com/juliendargelos/gui#readme",
+  "bugs": "https://github.com/juliendargelos/gui/issues",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "browser": "dist/index.umd.js",
@@ -25,12 +25,14 @@
     "@rollup/plugin-html": "^0.1.1",
     "@rollup/plugin-node-resolve": "^7.1.0",
     "@types/jest": "^25.1.1",
+    "@types/nanoid": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "rollup": "^1.31.0",
     "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-serve": "^1.0.1",
@@ -38,5 +40,10 @@
     "rollup-plugin-ts": "^1.2.14",
     "ts-jest": "^25.1.0",
     "typescript": "3.7.5"
+  },
+  "dependencies": {
+    "@types/color": "^3.0.1",
+    "color": "^3.1.2",
+    "lit-element": "^2.2.1"
   }
 }

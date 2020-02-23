@@ -1,5 +1,6 @@
 import autoExternal from 'rollup-plugin-auto-external'
 import nodeResolve from '@rollup/plugin-node-resolve'
+import bundleSize from 'rollup-plugin-bundle-size'
 import commonjs from '@rollup/plugin-commonjs'
 import cleaner from 'rollup-plugin-cleaner'
 import alias from '@rollup/plugin-alias'
@@ -23,6 +24,7 @@ const config = {
   output: { sourcemap: true },
   plugins: [
     build && autoExternal(),
+    build && bundleSize(),
     alias({
       resolve: ['.ts'],
       entries: Object
@@ -53,10 +55,7 @@ export default [
       ...config.output,
       file: pkg.browser,
       format: 'umd',
-      name: pkg.name
-        .split(/[^a-z0-9]+/i)
-        .map(part => part && part[0].toUpperCase() + part.slice(1))
-        .join('')
+      name: 'GUI'
     },
     plugins: [
       ...config.plugins,
@@ -76,7 +75,10 @@ export default [
     output: {
       ...config.output,
       file: 'demo-dist/index.js',
-      format: 'iife'
+      format: 'iife',
+      globals: {
+        crypto: 'crypto'
+      }
     },
     plugins: [
       ...config.plugins,

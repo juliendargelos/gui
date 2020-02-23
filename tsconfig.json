@@ -2,7 +2,12 @@
   "compilerOptions": {
     "target": "es6",
     "module": "es2015",
-    "lib": ["es2017", "dom", "es6", "dom.iterable", "scripthost"],
+    "lib": [
+      "scripthost",
+      "es6",
+      "es2017", "es2016.array.include",
+      "dom", "dom.iterable"
+    ],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
