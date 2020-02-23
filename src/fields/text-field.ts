@@ -8,7 +8,7 @@ export interface TextFieldParameters extends FieldParameters<string> {
   multiline?: boolean
 }
 
-@define export class TextField extends Field<string> {
+@define('text-field') export class TextField extends Field<string> {
   @property({ type: Number }) public maximumLength: number
   @property({ type: Boolean }) public multiline: boolean
 

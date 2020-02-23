@@ -22,7 +22,7 @@ export interface GroupControllerParameters<
   flat?: boolean
 }
 
-@define export class GroupController<
+@define('group-controller') export class GroupController<
   Target extends ControllerTarget = ControllerTarget
 > extends Controller<Target> {
   @query('div') protected content!: HTMLElement

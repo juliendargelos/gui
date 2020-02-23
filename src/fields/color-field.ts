@@ -20,7 +20,7 @@ export interface ColorFieldParameters<
   alpha?: Alpha
 }
 
-@define export class ColorField<
+@define('color-field') export class ColorField<
   Format extends ColorFormat = 'rgb',
   Alpha extends boolean = boolean
 > extends Field<Color<Format, Alpha>, Color> {

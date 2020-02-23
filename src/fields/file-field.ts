@@ -21,7 +21,7 @@ export interface FileFieldParameters<
   accept?: string
 }
 
-@define export class FileField<
+@define('file-field') export class FileField<
   Format extends keyof FileFieldFormats = 'url'
 > extends Field<
   FileFieldFormats[Format],

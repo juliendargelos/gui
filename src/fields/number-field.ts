@@ -29,7 +29,7 @@ const trackStyles = css`
   border-radius: 2px;
 `
 
-@define export class NumberField extends Field<number> {
+@define('number-field') export class NumberField extends Field<number> {
   @query('input[type="number"]') protected $input?: HTMLInputElement
   @property({ type: Number, attribute: false }) protected displayValue: number
   @property({ type: Number }) public minimum: number

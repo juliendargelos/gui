@@ -8,7 +8,7 @@ export interface ImageFieldParameters<
 
 }
 
-@define export class ImageField<
+@define('image-field') export class ImageField<
   Format extends keyof FileFieldFormats = 'url'
 > extends FileField<Format> {
   @property({ type: String, attribute: false }) protected thumbnail?: string

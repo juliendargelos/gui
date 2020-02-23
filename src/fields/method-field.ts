@@ -14,7 +14,9 @@ export interface MethodFieldParameters extends FieldParameters<
   args?: ValueControllerFieldParameters[]
 }
 
-@define export class MethodField extends Field<(...args: unknown[]) => void> {
+@define('method-field') export class MethodField extends Field<
+  (...args: unknown[]) => void
+> {
   protected parametersController?: GroupController
 
   public static styles = css`

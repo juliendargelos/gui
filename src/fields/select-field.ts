@@ -12,7 +12,9 @@ export interface SelectFieldParameters<
   humanize?: boolean
 }
 
-@define export class SelectField<Value = unknown> extends Field<Value> {
+@define('select-field') export class SelectField<
+  Value = unknown
+> extends Field<Value> {
   @property({ type: Object }) public options?: SelectFieldOptions<Value>
   @property({ type: Boolean }) public humanize: boolean
 

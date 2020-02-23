@@ -6,7 +6,11 @@ export interface CheckboxFieldParameters extends FieldParameters<boolean> {
 
 }
 
-@define export class CheckboxField extends Field<boolean, boolean, boolean> {
+@define('checkbox-field') export class CheckboxField extends Field<
+  boolean,
+  boolean,
+  boolean
+> {
   protected toggle = (event: Event) => this.$input.click()
   @query('input') protected $input!: HTMLInputElement
 

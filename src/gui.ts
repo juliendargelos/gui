@@ -15,7 +15,7 @@ export interface GUIParameters<
   position?: string
 }
 
-@define export class GUI<
+@define('panel') export class GUI<
   Target extends ControllerTarget = ControllerTarget
 > extends GroupController<Target> {
   @property({ type: String, reflect: true }) public scheme?: string

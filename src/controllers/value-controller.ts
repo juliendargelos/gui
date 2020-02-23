@@ -32,7 +32,7 @@ export type ValueControllerFieldParameters<
   { [parameter: string]: any }
 )
 
-@define export class ValueController<
+@define('value-controller') export class ValueController<
   Target extends ControllerTarget = ControllerTarget,
   Property extends keyof Target = keyof Target,
   Value extends Target[Property] = Target[Property]
