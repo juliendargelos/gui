@@ -543,7 +543,7 @@ const X=(e,t)=>"method"!==t.kind||!t.descriptor||"value"in t.descriptor?{kind:"f
           .min=${this.inferedMinimum}
           .max=${this.inferedMaximum}
           .step=${this.step}
-          @input=${e=>{this.input(e),this.displayValue=this.value}}
+          @input=${e=>{this.input(e),requestAnimationFrame(()=>{this.displayValue=this.value})}}
         >
       `:""}
       <div>
