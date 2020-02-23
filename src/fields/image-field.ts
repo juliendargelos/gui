@@ -1,4 +1,6 @@
 /**
+ * ## Image field
+ *
  * ```
  * new GUI()
  *   .add({ value: File([], 'foo.png', { type: 'image/png' }) }) // Auto detect
@@ -11,7 +13,7 @@
  * <br>
  *
  * <center>
- *   <img alt="preview" src="../../media/fields/image.png" width="300">
+ *   <img alt="preview" src="../media/fields/image.png" width="300">
  * </center
  *
  * @packageDocumentation

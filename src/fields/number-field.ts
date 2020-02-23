@@ -1,4 +1,6 @@
 /**
+ * ## Number field
+ *
  * ```
  * new GUI()
  *   .add({ value: 1 }) // Auto detect
@@ -9,7 +11,7 @@
  * <br>
  *
  * <center>
- *   <img alt="preview" src="../../media/fields/number.png" width="300">
+ *   <img alt="preview" src="../media/fields/number.png" width="300">
  * </center
  *
  * @packageDocumentation

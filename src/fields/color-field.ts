@@ -1,4 +1,6 @@
 /**
+ * ## Color field
+ *
  * ```
  * new GUI()
  *   .add({ value: '#123' }) // Auto detect
@@ -16,7 +18,7 @@
  * <br>
  *
  * <center>
- *   <img alt="preview" src="../../media/fields/color.png" width="300">
+ *   <img alt="preview" src="../media/fields/color.png" width="300">
  * </center
  *
  * @packageDocumentation

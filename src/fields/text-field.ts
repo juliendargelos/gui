@@ -1,4 +1,6 @@
 /**
+ * ## Text field
+ *
  * ```
  * new GUI()
  *   .add({ options: 'foo' }) // Auto detect
@@ -9,7 +11,7 @@
  * <br>
  *
  * <center>
- *   <img alt="preview" src="../../media/fields/text.png" width="300">
+ *   <img alt="preview" src="../media/fields/text.png" width="300">
  * </center
  *
  * @packageDocumentation

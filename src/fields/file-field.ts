@@ -1,4 +1,6 @@
 /**
+ * ## File field
+ *
  * ```
  * new GUI()
  *   .add({ value: new File([], 'foo.txt') }) // Auto detect
@@ -13,7 +15,7 @@
  * <br>
  *
  * <center>
- *   <img alt="preview" src="../../media/fields/file.png" width="300">
+ *   <img alt="preview" src="../media/fields/file.png" width="300">
  * </center
  *
  * @packageDocumentation

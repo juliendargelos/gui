@@ -1,4 +1,6 @@
 /**
+ * ## Checkbox field
+ *
  * ```
  * new GUI()
  *   .add({ value: false }) // Auto detect
@@ -9,7 +11,7 @@
  * <br>
  *
  * <center>
- *   <img alt="preview" src="../../media/fields/checkbox.png" width="300">
+ *   <img alt="preview" src="../media/fields/checkbox.png" width="300">
  * </center
  *
  * @packageDocumentation
