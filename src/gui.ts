@@ -124,7 +124,7 @@ export interface GUIParameters<
       height: 100%;
       box-sizing: border-box;
       border-radius: 4px;
-      z-index: -1;
+      z-index: 0;
       border: 1px solid var(--primary-background);
       position: absolute;
     }
