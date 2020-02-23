@@ -1,4 +1,4 @@
-<img alt="Preview" src="preview.png" align="right" width="45%">
+<img alt="Preview" src="preview.png" align="right" width="50%">
 
 # GUI
 
