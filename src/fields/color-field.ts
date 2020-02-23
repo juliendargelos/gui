@@ -204,7 +204,9 @@ export interface ColorFieldParameters<
         `}
         @input=${(event: InputEvent) => {
           this.input(event)
-          this.displayValue = color(this.value, 'hex')
+          requestAnimationFrame(() => {
+            this.displayValue = color(this.value, 'hex')
+          })
         }}
       >
 
@@ -219,7 +221,9 @@ export interface ColorFieldParameters<
             .step=${0.01}
             @input=${this.input}
             @blur=${() => {
-              this.displayAlpha = colorAlpha(this.value)
+              requestAnimationFrame(() => {
+                this.displayAlpha = colorAlpha(this.value)
+              })
             }}
           >
         </div>
