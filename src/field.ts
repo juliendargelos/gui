@@ -111,7 +111,7 @@ export class Field<
    * Returns true if the parameters matches this field type
    */
   public static match(parameters: Record<string, any>): boolean {
-    return this.types.some(({ type }) => type.match(parameters))
+    return false
   }
 
   /**
