@@ -221,7 +221,7 @@ export interface FileFieldParameters<
     return super.set(value)
   }
 
-  public clear() {
+  public clear(): void {
     const previous = this.value
     this.set(undefined)
     this.dispatchEvent(new UpdateEvent(this.value, previous))

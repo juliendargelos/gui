@@ -32,7 +32,7 @@ export interface CheckboxFieldParameters extends FieldParameters<boolean> {
   boolean,
   boolean
 > {
-  protected toggle = (event: Event) => this.$input.click()
+  protected toggle = (): void => this.$input.click()
   @query('input') protected $input!: HTMLInputElement
 
   /**

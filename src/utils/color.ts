@@ -28,7 +28,7 @@ export type Color<
 
 const formats = ['number', 'hex', 'rgb', 'array', 'object']
 const hexPattern = /^\s*#?([a-f\d]{6}|[a-f\d]{3})\s*$/i
-const rgbPattern = /^\s*rgb(?:a)?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d\.]+)\s*)?\)\s*$/i
+const rgbPattern = /^\s*rgb(?:a)?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d\.]+)\s*)?\)\s*$/i // eslint-disable-line
 
 function f(value: unknown): number {
   return typeof value === 'number' ? value : parseFloat(value as string)
@@ -136,16 +136,16 @@ export function color<
 
   switch (typeof value) {
     case 'string':
-      let hex = value.match(hexPattern)
+      const hex = value.match(hexPattern)
 
       if (hex) {
-        let v = hex[1]
+        const v = hex[1]
         value = parseInt(
           v.length === 6 ? v : `${v[0]}${v[0]}${v[1]}${v[1]}${v[2]}${v[2]}`,
           16
         )
       } else {
-        let rgb = value.match(rgbPattern)
+        const rgb = value.match(rgbPattern)
 
         if (rgb) {
           r = parseInt(rgb[1], 10)

@@ -33,7 +33,7 @@
  * @packageDocumentation
  */
 
-import { html, css, property, TemplateResult } from 'lit-element'
+import { html, css, TemplateResult } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { GroupController } from '~/controllers/group-controller'
 import { define } from '~/utils/decorators'

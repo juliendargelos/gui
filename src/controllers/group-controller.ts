@@ -1,5 +1,4 @@
 import { html, css, property, query, TemplateResult } from 'lit-element'
-import { Field } from '~/field'
 import { define } from '~/utils/decorators'
 import { humanize } from '~/utils/string'
 
@@ -186,7 +185,7 @@ export interface GroupControllerParameters<
 
   protected resolve<
     ChildTarget extends ControllerTarget = Target,
-    Property extends string | number | Symbol = string | number | Symbol
+    Property extends string | number | symbol = string | number | symbol
   >(property: Property, target?: ControllerTarget): {
     property: Property
     target?: ChildTarget
@@ -198,7 +197,7 @@ export interface GroupControllerParameters<
       }
     }
 
-    let path = property.split('.')
+    const path = property.split('.')
 
     return {
       property: path.pop()! as Property,
@@ -218,9 +217,11 @@ export interface GroupControllerParameters<
   /**
    * Attach all child controllers to their target (if they have one)
    */
-  public attach(target: Target | undefined = this.target): this {
+  public attach(target?: Target): this {
     super.attach(target)
-    this.childControllers.forEach(controller => controller.attach(target))
+    this.childControllers.forEach(controller => {
+      controller.attach(target || controller.target)
+    })
     return this
   }
 
@@ -242,15 +243,16 @@ export interface GroupControllerParameters<
    * ```
    * new GUI({ target })
    *   .add('lorem') // Property name refering to target
-   *   .add('lorem', { minimum: 5 }) // Additional parameters (assuming type number)
+   *   .add('lorem', { minimum: 5 }) // Additional parameters (assuming number)
    *   .add('lorem', { field: 'number' }) // Specify explicit field type
    *   .add('lorem', { target: { lorem: 1 } }) // Overwrite target
-   *   .add('lorem', (controller) => { // Pass controller callback as last argument
+   *   .add('lorem', (controller) => { // Controller callback as last argument
    *     controller.maximum = 10
    *   }))
    *   .add(new ValueController()) // Use controller instance
    *   .add({ property: 'lorem', field: 'number' }) // Use plain object
-   *   .add({ field: 'number' }) // Standalone controller (not attached to a property)
+   *   .add({ field: 'number' }) // Standalone controller which is not attached
+   *                             // to a target and property
    * ```
    */
   public add<ChildController extends Controller>(
@@ -346,9 +348,10 @@ export interface GroupControllerParameters<
    *
    * ```
    * new GUI({ target })
-   *   .group('lorem', group => group // Property name refering to target (value must be an object)
+   *   .group('lorem', group => { // Property name refering to target
+   *                              // (value must be an object)
    *     // Do other things with the child group
-   *   )
+   *   })
    *   .group('lorem', { open: true }) // Additional parameters
    *   .group('lorem', { target: { foo: 1 } }) // Overwrite target
    *   .group({ target: { foo: 1 } }) // Use plain object
@@ -416,7 +419,7 @@ export interface GroupControllerParameters<
    */
   public remove(controller?: Controller): this {
     if (controller) {
-      let index = this.childControllers.indexOf(controller)
+      const index = this.childControllers.indexOf(controller)
       index !== -1 && this.childControllers.splice(index, 1)
     }
 

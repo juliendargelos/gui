@@ -1,4 +1,4 @@
-import { TemplateResult, property, css } from 'lit-element'
+import { property, css } from 'lit-element'
 import { Component } from '~/component'
 import { UpdateEvent } from '~/update-event'
 
@@ -110,7 +110,7 @@ export class Field<
   /**
    * Returns true if the parameters matches this field type
    */
-  public static match(parameters: Record<string, any>): boolean {
+  public static match(parameters: Record<string, any>): boolean { // eslint-disable-line
     return false
   }
 
@@ -139,11 +139,12 @@ export class Field<
   }
 
   /**
-   * Creates a field from arbitrary parameters. It will try to detect the corresponding
-   * field type based on the return of [[Field.match] within registered Field types.
+   * Creates a field from arbitrary parameters. It will try to detect the
+   * corresponding field type based on the return of [[Field.match] within
+   * registered Field types.
    *
-   * The `name` parameter of [[Field.register]] can be used to require an explicit
-   * field type:
+   * The `name` parameter of [[Field.register]] can be used to require an
+   * explicit field type:
    *
    * ```
    * Field.from({ field: 'number' })

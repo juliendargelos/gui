@@ -79,7 +79,7 @@ export interface SelectFieldParameters<
   public get labels(): string[] {
     if (!this.options) return []
 
-    let labels = Array.isArray(this.options)
+    const labels = Array.isArray(this.options)
       ? this.options.map((option: Value) => `${option}`)
       : Object.keys(this.options)
 

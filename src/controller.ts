@@ -1,4 +1,4 @@
-import { TemplateResult, html, property, css } from 'lit-element'
+import { property, css } from 'lit-element'
 import { Component } from '~/component'
 import { UpdateEvent } from '~/update-event'
 

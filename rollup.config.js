@@ -22,9 +22,10 @@ const build = !demo
 
 const config = {
   input: 'src/index.ts',
-  output: { sourcemap: true },
+  output: {
+    sourcemap: true
+  },
   plugins: [
-    build && autoExternal(),
     build && bundleSize(),
     alias({
       resolve: ['.ts'],
@@ -44,8 +45,9 @@ export default [
     ],
     plugins: [
       ...config.plugins,
-      ts(),
+      autoExternal(),
       eslint(),
+      ts(),
       cleaner({ targets: [pkg.main.replace(/\/[^\/]+$/, '')] }),
     ]
   },

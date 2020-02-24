@@ -1,4 +1,3 @@
-import { Field } from '~/field'
 import { TextField, TextFieldParameters } from '~/fields/text-field'
 import { NumberField, NumberFieldParameters } from '~/fields/number-field'
 import { ColorField, ColorFieldParameters } from '~/fields/color-field'

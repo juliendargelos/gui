@@ -21,9 +21,14 @@
  * @packageDocumentation
  */
 
-import { html, css, property, query, TemplateResult } from 'lit-element'
-import { FileField, FileFieldParameters, FileFieldFormats } from '~/fields/file-field'
+import { html, css, property, TemplateResult } from 'lit-element'
 import { define } from '~/utils/decorators'
+
+import {
+  FileField,
+  FileFieldParameters,
+  FileFieldFormats
+} from '~/fields/file-field'
 
 export interface ImageFieldParameters<
   Format extends keyof FileFieldFormats = 'url'

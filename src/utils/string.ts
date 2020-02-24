@@ -1,13 +1,5 @@
-export function humanize(string: string): string {
-  return upCaseFirst(joinCamelCased(`${string}`, ' ')).replace(/[-_\s]+/g, ' ')
-}
-
 export function upCaseFirst(string: string): string {
   return `${string[0].toUpperCase()}${string.slice(1)}`
-}
-
-export function optionalString(value: unknown): string {
-  return value === undefined ? '' : `${value}`
 }
 
 export function joinCamelCased(
@@ -17,4 +9,12 @@ export function joinCamelCased(
   return string
     .replace(/([^A-Z\d])([A-Z\d]+)/g, `$1${separator}$2`)
     .toLowerCase()
+}
+
+export function humanize(string: string): string {
+  return upCaseFirst(joinCamelCased(`${string}`, ' ')).replace(/[-_\s]+/g, ' ')
+}
+
+export function optionalString(value: unknown): string {
+  return value === undefined ? '' : `${value}`
 }

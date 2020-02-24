@@ -1,4 +1,4 @@
-import { html, property, css } from 'lit-element'
+import { TemplateResult, html, property, css } from 'lit-element'
 import { Field, FieldParameters } from '~/field'
 import { UpdateEvent } from '~/update-event'
 import { define } from '~/utils/decorators'
@@ -19,7 +19,6 @@ export interface ValueControllerParameters<
   property?: Property
   inline?: boolean
   fluid?: boolean
-  immediate?: boolean
 }
 
 export type ValueControllerFieldParameters<
@@ -96,12 +95,13 @@ export type ValueControllerFieldParameters<
     }
   `
 
-  public get value(): Value {
+  public get value(): Value | undefined {
     return this.field.value
   }
 
-  public set value(value: Value) {
+  public set value(value: Value | undefined) {
     this.field.set(value)
+    this.commit(new UpdateEvent(value, undefined))
   }
 
   public constructor(parameters: ValueControllerParameters<
@@ -123,7 +123,6 @@ export type ValueControllerFieldParameters<
     fluid = false,
     target = undefined,
     listen = false,
-    immediate = true,
     label = property ? humanize(`${property}`) : undefined,
     value = target && property ? target[property] as Value : undefined,
     ...parameters
@@ -138,8 +137,8 @@ export type ValueControllerFieldParameters<
     this.inline = inline
     this.fluid = fluid
     this.field = field instanceof Field ? field : Field.from({
-      value,
       field,
+      value,
       ...parameters
     }) as Field<Value>
 
@@ -148,7 +147,7 @@ export type ValueControllerFieldParameters<
 
     this.attach()
 
-    immediate && this.commit(new UpdateEvent(this.value, undefined))
+    this.value = value
   }
 
   protected commit(event: UpdateEvent): void {
@@ -164,6 +163,7 @@ export type ValueControllerFieldParameters<
 
     if (this.target && this.property) {
       this.field.on('update', this.commit)
+      this.value = this.target[this.property]
 
       if (this.listen) {
         this.descriptor = Object.getOwnPropertyDescriptor(
@@ -220,7 +220,7 @@ export type ValueControllerFieldParameters<
   /**
    * @ignore
    */
-  public render() {
+  public render(): TemplateResult {
     return html`${this.label
       ? html`<span @mousedown=${(event: Event) => event.preventDefault()}>
           ${this.label}

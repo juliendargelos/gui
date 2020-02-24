@@ -184,7 +184,7 @@ export interface GUIParameters<
     const origin = event.clientX
     const width = this.offsetWidth
 
-    const mousemove = (event: MouseEvent) => {
+    const mousemove = (event: MouseEvent): void => {
       event.preventDefault()
       const direction = this.position && this.position.includes('left') ? 1 : -1
       this.width = width + direction * (event.clientX - origin)

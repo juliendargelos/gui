@@ -1,5 +1,6 @@
 export { GUI } from '~/gui'
 export { UpdateEvent } from '~/update-event'
+export { define } from '~/utils/decorators'
 export * from '~/controller'
 export * from '~/controllers'
 export * from '~/field'

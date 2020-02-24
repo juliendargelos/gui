@@ -152,7 +152,7 @@ export interface ColorFieldParameters<
 
   protected parse(value: string): Color {
     if (this.includeAlpha) {
-      let colorObject = color(value, 'object', true)
+      const colorObject = color(value, 'object', true)
       colorObject.a = Math.max(0, Math.min(1,
         parseFloat(this.$alpha.value) || 0
       ))
@@ -200,7 +200,13 @@ export interface ColorFieldParameters<
         .disabled=${this.disabled}
         style=${`
           background-color: ${color(this.value, 'rgb', true)};
-          background-image: linear-gradient(-45deg, ${alphaColor} 50%, transparent 50%, transparent 100%, ${alphaColor} 100%, ${alphaColor});
+          background-image: linear-gradient(-45deg, ${
+            alphaColor
+          } 50%, transparent 50%, transparent 100%, ${
+            alphaColor
+          } 100%, ${
+            alphaColor
+          });
         `}
         @input=${(event: InputEvent) => {
           this.input(event)

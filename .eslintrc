@@ -6,7 +6,10 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "max-len": ["warn"],
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-triple-slash-reference": "off",
     "@typescript-eslint/member-delimiter-style": ["error", {
