@@ -14,7 +14,7 @@ const target = {
   lorem: 1,
   ipsum: 'foo',
   dolor: new File([], 'foo.txt'),
-  sit: (name: string) => alert(`Hey ${name}`),
+  sit: name => alert(`Hey ${name}`),
   amet: {
     consectetur: false,
     adipisicing: 'rgba(35, 50, 75, 0.5)',
