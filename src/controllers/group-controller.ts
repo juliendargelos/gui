@@ -218,9 +218,9 @@ export interface GroupControllerParameters<
   /**
    * Attach all child controllers to their target (if they have one)
    */
-  public attach(): this {
-    super.attach()
-    this.childControllers.forEach(controller => controller.attach())
+  public attach(target: Target | undefined = this.target): this {
+    super.attach(target)
+    this.childControllers.forEach(controller => controller.attach(target))
     return this
   }
 

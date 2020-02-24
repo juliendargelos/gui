@@ -159,8 +159,8 @@ export type ValueControllerFieldParameters<
     }
   }
 
-  public attach(): this {
-    super.attach()
+  public attach(target: Target | undefined = this.target): this {
+    super.attach(target)
 
     if (this.target && this.property) {
       this.field.on('update', this.commit)

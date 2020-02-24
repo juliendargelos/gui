@@ -54,8 +54,10 @@ export class Controller<
     this.label = label
   }
 
-  public attach(): this {
-    return this.dettach()
+  public attach(target: Target | undefined = this.target): this {
+    this.dettach()
+    this.target = target
+    return this
   }
 
   public dettach(): this {
