@@ -15,7 +15,7 @@ export interface ControllerParameters<
 export class Controller<
   Target extends ControllerTarget = ControllerTarget
 > extends Component<{ update: UpdateEvent }> {
-  public readonly target?: Target
+  public target?: Target
   public listen: boolean
   @property({ type: String }) public label?: string
 
