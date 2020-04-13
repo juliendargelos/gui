@@ -6252,9 +6252,9 @@ typedoc-default-themes@^0.7.0, typedoc-default-themes@^0.7.2:
     underscore "^1.9.1"
 
 typedoc-neo-theme@^1.0.5:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/typedoc-neo-theme/-/typedoc-neo-theme-1.0.7.tgz#58845d08de7464bd9bdf69a13e42f5edec024932"
-  integrity sha512-MGwG/1uYgcMcFLffEPB683x4yWNbYwx/qG19c9NhMCOkbEmi1s7A/D1q7nXN00AY9NKaLl9wmc95XqX+uzgi8Q==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/typedoc-neo-theme/-/typedoc-neo-theme-1.0.8.tgz#d4839a570d1f7fa6a0e518e12c9cff83e1cec2fc"
+  integrity sha512-EtXv9DcsQxcBDEiXsOxuKhUFNFlDJEB+zXl7nmF2hcIC7N11uYgH4LX990C9E7SxJVhPlWy8WP0CDbb21yu1vg==
   dependencies:
     typedoc "0.16.0"
 
