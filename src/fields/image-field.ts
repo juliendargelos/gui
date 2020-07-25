@@ -143,10 +143,11 @@ export interface ImageFieldParameters<
    * @ignore
    */
   public static match(parameters: Record<string, any>): boolean {
-    const value = parameters.value as File
+    const value = parameters.value as Blob | string
+
     return (value &&
       (typeof value === 'string' && /\.(png|jpe?g|gif|svg)$/i.test(value)) ||
-      (super.match(parameters) && value.type.slice(0, 6) === 'image/')
+      (value instanceof Blob && value.type.slice(0, 6) === 'image/')
     )
   }
 }

@@ -20,6 +20,9 @@ export interface FieldParameters<Input = any> {
   disabled?: boolean
 }
 
+/**
+ * Base class for gui fields
+ */
 export class Field<
   Value = any,
   Input = Value,
@@ -35,7 +38,7 @@ export class Field<
   @property() public value!: Value
 
   /**
-   * Disable the field when set to true
+   * Disables the field
    */
   @property({ type: Boolean }) public disabled: boolean
 
@@ -82,6 +85,9 @@ export class Field<
     this.disabled = disabled
   }
 
+  /**
+   * Input event listener
+   */
   protected input(event: InputEvent): void {
     event.stopPropagation()
     const previous = this.value
@@ -91,10 +97,16 @@ export class Field<
     )
   }
 
+  /**
+   * Extracts raw value from the given `InputEvent`
+   */
   protected extract(event: InputEvent): Raw {
     return (event.target as HTMLInputElement).value as unknown as Raw
   }
 
+  /**
+   * Parses the given raw value to field-specific format
+   */
   protected parse(value: Raw): Input | Promise<Input> {
     return value as unknown as Input
   }

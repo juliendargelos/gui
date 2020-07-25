@@ -11,15 +11,14 @@ const target = {
   amet: {
     consectetur: false,
     adipisicing: 'rgba(35, 50, 75, 0.5)',
-    elit: 'https://picsum.photos/400/200.jpg'
+    elit: 'https://picsum.photos/400/200.jpg',
+    sed: 0
   }
 }
 
-const gui = new GUI({
-  target,
-  position: 'top right',
-  fixed: true
-})
+const gui = new GUI({ target })
+
+gui
   .add('lorem')
   .add('ipsum')
   .add('dolor')
@@ -28,23 +27,30 @@ const gui = new GUI({
     .add('consectetur')
     .add('adipisicing')
     .add('elit')
+    .add('sed', { listen: true, range: false })
   )
-
-gui.group({ target: gui, label: 'GUI' }, group => group
-  .add('scheme', { options: ['auto', 'light', 'dark'] })
-  .add('position', {
-    options: [
-      'none',
-      'top left',
-      'top right',
-      'bottom left',
-      'bottom right'
-    ]
-  })
-  .add('fixed')
-)
+  .group({ target: gui, label: 'GUI' }, group => group
+    .add('scheme', { options: ['auto', 'light', 'dark'] })
+    .add('position', {
+      options: [
+        'none',
+        'top left',
+        'top right',
+        'bottom left',
+        'bottom right'
+      ]
+    })
+    .add('fixed')
+  )
 
 gui.on('update', () => preview(target))
 preview(target)
 
 document.body.appendChild(gui)
+
+const updateDate = () => {
+  target.amet.sed = Date.now()
+  requestAnimationFrame(updateDate)
+}
+
+updateDate()

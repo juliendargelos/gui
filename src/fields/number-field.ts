@@ -183,6 +183,12 @@ const trackStyles = css`
     ))
   }
 
+  public set(value: number): this {
+    super.set(value)
+    this.displayValue = this.value
+    return this
+  }
+
   /**
    * @ignore
    */

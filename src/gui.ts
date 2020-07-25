@@ -167,8 +167,8 @@ export interface GUIParameters<
 
   constructor({
     scheme = undefined,
-    fixed = false,
-    position = undefined,
+    fixed = true,
+    position = 'top right',
     label = 'Parameters',
     open = true,
     ...parameters

@@ -342,15 +342,16 @@ export interface GroupControllerParameters<
   }
 
   /**
-   * Adds a new group child controller to the group controller.
+   * Adds a new group controller under the current group.
    *
    * You can pass either a property name and / or [[GroupControllerParameters]].
    *
    * ```
    * new GUI({ target })
-   *   .group('lorem', group => { // Property name refering to target
-   *                              // (value must be an object)
-   *     // Do other things with the child group
+   *   .group('lorem', (group) => { // Property name refering to target
+   *                                // (value must be an object)
+   *     // Do other things with the child group which has now `target.lorem` as
+   *     // its own target
    *   })
    *   .group('lorem', { open: true }) // Additional parameters
    *   .group('lorem', { target: { foo: 1 } }) // Overwrite target

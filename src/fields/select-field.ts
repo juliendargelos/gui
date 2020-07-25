@@ -125,6 +125,6 @@ export interface SelectFieldParameters<
    * @ignore
    */
   public static match({ options = undefined }: Record<string, any>): boolean {
-    return options && typeof options === 'object'
+    return options && (typeof options === 'object' || Array.isArray(options))
   }
 }

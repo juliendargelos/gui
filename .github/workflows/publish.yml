@@ -18,11 +18,11 @@ jobs:
         node-version: 12.x
         registry-url: https://registry.npmjs.org
     - name: Install
-      run: yarn install
+      run: npm install
     - name: Test
-      run: yarn test
+      run: npm run test
     - name: Build
-      run: yarn build
+      run: npm run build
     - name: Publish to npm
       uses: luvies/action-yarn-publish@v0.1.1
       env:

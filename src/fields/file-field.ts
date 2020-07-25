@@ -161,7 +161,7 @@ export interface FileFieldParameters<
             value instanceof ReadableStream ? 'stream' : 'url'
     ) as Format,
     accept = value instanceof File || value instanceof Blob
-      ? value.type
+      ? value.type.replace(/^(image|audio|video)\/.*$/, '$1/*') /**/
       : undefined,
     ...parameters
   }: FileFieldParameters<Format> = {}) {
@@ -184,33 +184,26 @@ export interface FileFieldParameters<
     if (!value) return
 
     switch (this.format) {
-      case 'file':
-        return value as FileFieldFormats[Format]
-
       case 'url':
         return URL.createObjectURL(value) as FileFieldFormats[Format]
-    }
 
-    const blob: Blob = new Blob([value], { type: value.type })
-
-    switch (this.format) {
       case 'text':
-        return blob.text() as Promise<FileFieldFormats[Format]>
+        return value.text() as Promise<FileFieldFormats[Format]>
 
       case 'buffer':
-        return blob.arrayBuffer() as Promise<FileFieldFormats[Format]>
+        return value.arrayBuffer() as Promise<FileFieldFormats[Format]>
 
       case 'stream':
-        return blob.stream() as Promise<FileFieldFormats[Format]>
+        return value.stream() as Promise<FileFieldFormats[Format]>
     }
 
-    return blob as FileFieldFormats[Format]
+    return value as FileFieldFormats[Format]
   }
 
   public set(value: FileFieldFormats[Format] | undefined): this {
     if (!value && this.$input) this.$input.value = ''
 
-    if (value instanceof File || value instanceof Blob) {
+    if (value instanceof File) {
       this.name = (value as File).name
     } else if (typeof value === 'string') {
       this.name = value
@@ -252,7 +245,6 @@ export interface FileFieldParameters<
    */
   public static match({ value = undefined }: Record<string, any>): boolean {
     return (
-      value instanceof File ||
       value instanceof Blob ||
       value instanceof ArrayBuffer ||
       value instanceof ReadableStream

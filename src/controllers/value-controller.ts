@@ -37,7 +37,6 @@ export type ValueControllerFieldParameters<
   Value extends Target[Property] = Target[Property]
 > extends Controller<Target> {
   protected descriptor?: PropertyDescriptor
-  protected committing: boolean = false
   public readonly field: Field<Value>
   public readonly property?: keyof Target
   @property({ type: Boolean, reflect: true }) protected focused: boolean = false
@@ -152,9 +151,7 @@ export type ValueControllerFieldParameters<
 
   protected commit(event: UpdateEvent): void {
     if (this.target && this.property) {
-      this.committing = true
       this.target[this.property] = event.value as Target[keyof Target]
-      this.committing = false
     }
   }
 
@@ -183,7 +180,7 @@ export type ValueControllerFieldParameters<
             get,
             set: (v: Target[keyof Target]) => {
               const previous = get()
-              this.committing || this.field.set(v as unknown as Value)
+              this.field.set(v as unknown as Value)
               set.call(this.target, v)
               this.dispatchEvent(new UpdateEvent(v, previous))
             }

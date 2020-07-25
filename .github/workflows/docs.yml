@@ -17,13 +17,13 @@ jobs:
       with:
         node-version: 12.x
     - name: Install
-      run: yarn install
+      run: npm install
     - name: Build docs
-      run: yarn doc
+      run: npm run doc
       env:
         DEMO: true
     - name: Build demo
-      run: yarn build
+      run: npm run build
       env:
         DEMO: true
     - name: Create .nojekyll
