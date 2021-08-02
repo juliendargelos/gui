@@ -1,0 +1,45 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: typedoc
+    versions:
+    - 0.20.19
+    - 0.20.20
+    - 0.20.23
+    - 0.20.24
+    - 0.20.25
+    - 0.20.27
+    - 0.20.28
+    - 0.20.29
+    - 0.20.30
+    - 0.20.32
+    - 0.20.33
+    - 0.20.34
+    - 0.20.35
+  - dependency-name: "@types/jest"
+    versions:
+    - 26.0.20
+    - 26.0.21
+    - 26.0.22
+  - dependency-name: "@rollup/plugin-node-resolve"
+    versions:
+    - 11.1.0
+    - 11.1.1
+    - 11.2.0
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+    - 3.9.8
+  - dependency-name: "@rollup/plugin-html"
+    versions:
+    - 0.2.0
+    - 0.2.2
+  - dependency-name: "@types/highlightjs"
+    versions:
+    - 10.1.0
