@@ -7,7 +7,7 @@
 [![version](https://img.shields.io/github/package-json/v/juliendargelos/gui)](https://github.com/juliendargelos/gui)
 
 *Light and expressive GUI with web components*<br>
-**[Repository](https://github.com/juliendargelos/gui)** | **[Documentation](https://juliendargelos.com/gui)** | **[Demo](https://juliendargelos.com/gui/demo)**
+**[Repository](https://github.com/juliendargelos/gui)** | **[Documentation](https://julien.gl/gui)** | **[Demo](https://julien.gl/gui/demo)**
 
 ```typescript
 const target = {
